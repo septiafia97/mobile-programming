@@ -23,8 +23,11 @@ class _PoliDetailState extends State<PoliDetail> {
     //Mendeklarasikan metode build() yang diwajibkan untuk mengimplementasikan metode abstrak dari State. Metode ini akan membangun dan mengembalikan widget yang akan ditampilkan.
     Widget build(BuildContext context) { 
         return Scaffold( 
+        //Membuat instance Scaffold, yang menyediakan kerangka dasar untuk membangun tata letak aplikasi.
             appBar: AppBar(title: Text("Detail Poli")), 
+            //Mengatur properti appBar dari Scaffold menjadi sebuah AppBar. AppBar adalah widget yang menampilkan bilah atas (app bar) di aplikasi.
             body: Column( 
+            //Mengatur properti body dari Scaffold menjadi sebuah Column. Column adalah widget yang menampilkan widget anak secara vertikal.
                 children: [ 
                     SizedBox(height: 20), 
                     Text( 
@@ -47,6 +50,7 @@ class _PoliDetailState extends State<PoliDetail> {
                         ], 
                     ) 
                 ], 
+                //Mendefinisikan widget anak dalam Column. Pada contoh ini, terdapat satu widget SizedBox yang digunakan untuk memberikan jarak vertikal, dan satu widget Text yang menampilkan informasi detail tentang nama poli dari widget.poli. Properti widget.poli mengakses variabel poli yang dideklarasikan pada kelas PoliDetail.
             ), 
         ); 
     } 
