@@ -1,55 +1,51 @@
-import 'package:flutter/material.dart';
-//baris ini mengimpor pustaka flutter yang diperlukan.
-
-class PoliPage extends StatefulWidget {
-//baris ini mendefinisikan sebuah class PoliPage yang merupakan turunan dari StatefulWidget. StatefulWidget digunakan ketika ingin memiliki widget yang dapat berubah.
+import 'package:flutter/material.dart'; 
+//Mengimpor pustaka material.dart dari Flutter. Pustaka ini berisi widget dan komponen yang digunakan untuk membangun antarmuka pengguna berbasis Material Design.
+import '../model/poli.dart'; 
+//Mengimpor file poli.dart yang berisi definisi model Poli. Ini mungkin berisi struktur data atau logika terkait poli.
+import 'poli_detail.dart'; 
+//Mengimpor file poli_detail.dart yang mungkin berisi halaman detail poli.
+import 'poli_item.dart';
+//Mengimpor file poli_item.dart yang mungkin berisi widget untuk menampilkan item poli dalam daftar. 
+import 'poli_form.dart';
+//Mengimpor file poli_form.dart yang mungkin berisi formulir untuk menambahkan poli baru. 
+ 
+class PoliPage extends StatefulWidget { 
+//Mendefinisikan kelas PoliPage sebagai subkelas dari StatefulWidget. Kelas ini digunakan untuk membuat widget yang memiliki perubahan status (stateful).
   const PoliPage({super.key});
-  //baris ini mendefinisikan konstruktor PoliPage. Konstruktor ini menerima argumen opsional key yang diteruskan ke konstruktor superclass.
-
-  @override
-  //digunakan untuk menandakan bahwa metode di bawahnya akan menggantikan atau mengoverride metode dengan nama yang sama dari superclass atau interface yang diimplementasikan.
-  State<PoliPage> createState() => _PoliPageState();
-  //baris ini mengimplementasikan metode abstrak createState() yang didefinisikan oleh StatefulWidget.
-}
-
+  //Mendefinisikan konstruktor untuk kelas PoliPage dengan argumen opsional key. Konstruktor ini memanggil konstruktor superclass dengan menggunakan kata kunci super. 
+ 
+  @override 
+  //Menandai adanya override pada metode createState(). Metode ini digunakan untuk membuat dan mengembalikan objek State yang akan digunakan oleh widget ini.
+  State<PoliPage> createState() => _PoliPageState(); 
+} //Mengembalikan objek State baru yang sesuai dengan jenis PoliPage (dalam hal ini, _PoliPageState).
+ 
 class _PoliPageState extends State<PoliPage> {
-//baris ini mendefinisikan kelas _PoliPageState extends State<PoliPage> yang merupakan turunan dari State. Kelas ini bertanggung jawab untuk mengatur keadaan PoliPage.
-  @override
-  //anotasi ini digunakan untuk menandakan bahwa metode di bawahnya akan menggantikan atau meng-override metode dengan nama yang sama dari superclass atau interfaceyang diimplementasikan.
+//Mendefinisikan kelas _PoliPageState sebagai subkelas dari State<PoliPage>. Kelas ini digunakan untuk mengelola status dan membangun tampilan widget untuk PoliPage. 
+  @override 
   Widget build(BuildContext context) {
-    //baris ini mengimplementasikan metode build() yang diperlukan oleh State untuk membangun antarmuka pengguna. Metode ini mengembalikan widget yang akan ditampilkan.
+  //Menandai adanya override pada metode build(). Metode ini digunakan untuk membangun dan mengembalikan widget yang akan ditampilkan. 
     return Scaffold(
-      //baris ini mengembalikan sebuah widget Scaffold, yang merupakan kerangka untuk menyusun antarmuka pengguna dengan elemen seperti app bar, body, dan lainnya.
-      appBar: AppBar(title: const Text("Data Poli")),
-      //baris ini mengatur app bar yang akan ditampilkan di atas layar.
-      body: ListView(
-        //baris ini mengatur body dari Scaffold menggunakan widget ListView, yang digunakan untuk menampilkan daftar elemen dalam daftar gulir.
-        children: const [
-          Card(
-            child: ListTile(
-              title: const Text("Poli Anak"),
-            ),
-          ),
-          Card(
-            child: ListTile(
-              title: const Text("Poli Kandungan"),
-            ),
-          ),
-          Card(
-            child: ListTile(
-              title: const Text("Poli Gigi"),
-            ),
-          ),
-          Card(
-            child: ListTile(
-              title: const Text("Poli THT"),
-            ),
-          )
-          //baris 27-47 mendefinisikan daftar elemen dalam ListView menggunakan widget Card dan ListTile. Setisp Card berisi ListTile dengan teks judul yang berbeda.
-        ],
-        //baris ini menutup daftar elemen dalam ListView.
-      ),
-    );
-    //baris ini menutup Scaffold.
-  }
-}
+    //Membuat widget Scaffold, yang merupakan kerangka dasar untuk tata letak antarmuka pengguna yang Material Design. 
+      appBar: AppBar( 
+        title: const Text("Data Poli"), 
+        actions: [ 
+          GestureDetector( 
+            child: const Icon(Icons.add), 
+            onTap: () { 
+              Navigator.push( 
+                context, MaterialPageRoute(builder: (context) => PoliForm())); 
+            }, 
+          ) 
+        ], //Mengatur properti appBar pada Scaffold dengan sebuah AppBar. Properti appBar digunakan untuk menambahkan AppBar ke dalam Scaffold. Di sini, AppBar memiliki judul "Data Poli" dan memiliki satu aksi dengan GestureDetector dan Icon "add". Ketika pengguna mengetuk ikon, aplikasi akan melakukan navigasi ke halaman PoliForm. 
+      ), 
+      body: ListView( 
+        children: [ 
+          PoliItem(poli: Poli(namaPoli: "Poli Anak")), 
+          PoliItem(poli: Poli(namaPoli: "Poli Kandungan")), 
+          PoliItem(poli: Poli(namaPoli: "Poli Gigi")), 
+          PoliItem(poli: Poli(namaPoli: "Poli THT")), 
+        ], 
+      ), //Baris 41-48 : membuat ListView dengan daftar widget PoliItem. Setiap PoliItem mewakili satu item poli dalam daftar. Daftar item poli ini mungkin diperoleh dari sumber data seperti List<Poli> 
+    ); 
+  } 
+} 
