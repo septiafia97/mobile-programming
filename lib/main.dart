@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 //Mendeklarasikan dan mengimpor pustaka material.dart dari Flutter. Pustaka ini berisi widget dan komponen yang digunakan untuk membangun antarmuka pengguna berbasis Material Design.
 import '/ui/poli_page.dart';
 //Mengimpor file poli_page.dart yang berada dalam direktori /ui. Ini mengimpor definisi kelas atau fungsi yang ada di dalam file tersebut ke dalam file saat ini.
+import '/ui/pegawai_page.dart';
+//Mengimpor file pegawai_page.dart yang berada dalam direktori /ui.
+import '/ui/pasien_page.dart';
+//Mengimpor file pasien_page.dart yang berada dalam direktori /ui.
 
 void main() => runApp(MyApp());
 //Mendefinisikan fungsi main(). Fungsi ini adalah titik masuk utama (entry point) dari aplikasi Flutter. Semua kode di dalam fungsi main() akan dieksekusi saat aplikasi dijalankan.
