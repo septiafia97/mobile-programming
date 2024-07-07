@@ -25,7 +25,7 @@ class PegawaiPage extends StatefulWidget {
 }
 
 class _PegawaiPageState extends State<PegawaiPage> {
-// Bikin state buat halaman pegawai
+// Bikin class state buat halaman pegawai
   @override // Buat ganti fungsi build yang udah ada.
   Widget build(BuildContext context) { // Bikin tampilan halaman pegawai
     return Scaffold( // Bikin tampilan aplikasi
